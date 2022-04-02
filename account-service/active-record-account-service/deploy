@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -x
+eval "$(minikube -p minikube docker-env)"
+kubectl apply -f ./postgresql_kubernetes.yml
+mvn clean package -Dquarkus.kubernetes.deploy=true
+set +x
